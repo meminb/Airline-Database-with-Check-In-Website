@@ -1,0 +1,215 @@
+
+
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+ 
+  title Document
+  style.
+      .under{
+        border-bottom-style: dotted;
+      }
+      .splitVerti{border-style: solid;margin-right: 5px;
+        height: 80%;
+        width: 50%;
+        position: fixed;
+        z-index: 1;
+        top: 20%;
+        overflow-x: hidden;
+        padding-top: 20px;
+      }
+      .split03{border-style: solid;
+       margin-left: 10px;
+        height: 40%;
+        width: 50%;
+        position: fixed;
+        z-index: 1;
+        top: 20%;
+        overflow-x: hidden;
+        padding-top: 20px;
+      }
+      .split04{margin-top: 20px;border-style: solid;margin-left: 10px;
+        height: 40%;
+        width: 50%;
+        position: fixed;
+        z-index: 1;
+        top: 60%;
+        overflow-x: hidden;
+        padding-top: 20px;
+      }
+      .split {
+      height: 100%;
+      width: 50%;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      overflow-x: hidden;
+      padding-top: 20px;
+      }
+      .left {
+      left: 0;
+      background-color: #111;
+      }
+      .right {
+      right: 0;
+      /*background-color: red;*/
+      }
+      .centered {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      }
+     
+body
+.container
+.split 
+  
+  form(method ='post' action='/add' )
+    label(for='fnumber')   Flight number:
+    input#flight_Number_input(type='text' name='fnumber')
+    br
+    label(for='fleg')      Flight leg:
+    input#leg_no_input(type='text' name='fleg')
+    br
+    label(for='date')            date: 
+    input#date_input(type='text' name='date')
+    br
+    label(for='seatno')          Seat no:
+    input#seat_no_input(type='text' name='seatno')
+    br
+    label(for='fare')         Sınıf (fare):
+    input#fare_input(type='text' name='fare')
+    br
+    label(for='cupass') Customer passport:
+    input#customer_passport_input(type='text' name='cupass')
+    input(type='submit' value='Uçuşu al')
+    input(
+       type='checkbox'
+      name='agreement'
+      checked
+    )
+
+
+  .splitVerti
+    table
+      thead
+        tr
+          th Flight Number
+          th Leg no
+          th Date 
+          th Airplane
+          th available seats
+          th distance
+          th departure time
+          th arrival_time
+          th departure airport 
+          th arrival airport
+          th fare
+
+      tbody
+        each flight in  legView 
+          tr
+            th #{flight.flight_Number}
+            th #{flight.leg_no}
+            th #{flight.instance_date} 
+            th #{flight.airplane_id}
+            th #{flight.number_of_available_seats}
+            th #{flight.distance}
+            th #{flight.departure_time}
+            th #{flight.arrival_time}
+            th #{flight.departure_Airport}
+            th #{flight.arrival_Airport}
+            th #{flight.fare_code}
+            th #{flight.amount}
+    br 
+    br 
+
+
+.split.right  
+
+  form(method ='post' action='/add2' )
+      label(for='fnumber2')   Flight number:
+      input#flight_Number_input(type='text' name='fnumber2')
+      br
+      label(for='fleg2')      Flight leg:
+      input#leg_no_input(type='text' name='fleg2')
+      br
+      label(for='date2')            date: 
+      input#date_input(type='text' name='date2')
+      br
+      label(for='seatno2')          Seat no:
+      input#seat_no_input(type='text' name='seatno2')
+      br
+      label(for='aircode')          airline code:
+      input#saircode(type='text' name='aircode')
+      br
+      label(for='cupass2') Customer passport:
+      input#customer_passport_input(type='text' name='cupass2')
+      input(type='submit' value='check in')
+      input(
+         type='checkbox'
+        name='agreement'
+        checked
+      )
+  .split03
+    table
+      thead
+        tr
+          th customer_name
+          th Phone number
+          th Passport no 
+          th Adress
+          th Country
+          th E-Mail
+          th Millage Info
+          th Segment
+          th Airline 
+
+
+
+      tbody
+        each customer in  instances  
+          tr
+            th #{customer.customer_name}
+            th #{customer.phone}
+            th #{customer.passport_number} 
+            th #{customer.adress}
+            th #{customer.country}
+            th #{customer.email}
+            th #{customer.millage_info}
+            th #{customer.segmentation}
+            th #{customer.airline_code}
+  br
+  br
+  .split04
+    table
+      thead
+        tr 
+          th Flight Number
+          th Leg no
+          th Date 
+          th seat num
+          th cust passport
+          th fare 
+          th airline code
+
+      tbody
+        each inf in  notChecked  
+          tr
+            th #{inf.flight_Number}
+            th #{inf.leg_no}
+            th #{inf.instance_date} 
+            th #{inf.seat_number}
+            th #{inf.customer_passport}
+            th #{inf.fare_code}  
+            th #{inf.airline_code}
+
+
+
+
+
+
+
